@@ -119,7 +119,7 @@ for RaIndex in range(len(Ras)):
         # Exporting the results:
 
         errV = Norm(gfu)**2+Norm(grad(gfu))**2
-        ErrorVelocity[hmaxIndex,RaIndex] = Integrate(errV**(1/2),mesh,order=3);
+        ErrorVelocity[hmaxIndex,RaIndex] = Integrate(errV,mesh,order=3)**(1/2);
 
         pressure = CoefficientFunction(Ra*(y**3-0.5*y**2+y-7/12))
         
@@ -131,8 +131,8 @@ for RaIndex in range(len(Ras)):
         vtk.Do()
         sleep(3)
         
-        errP = Norm(gfp-pressure);
-        ErrorPressure[hmaxIndex,RaIndex] = Integrate(errP**(1/2),mesh,order=3);
+        errP = Norm(gfp-pressure)**2;
+        ErrorPressure[hmaxIndex,RaIndex] = Integrate(errP,mesh,order=3)**(1/2);
         Print("Error in pressure {}, Error in velocity {}".format(ErrorPressure[hmaxIndex,RaIndex],ErrorVelocity[hmaxIndex,RaIndex]))
 np.save("BP_US_ErrorPressure",ErrorPressure) #Error is measured in L2
 np.save("BP_US_ErrorVelocity",ErrorVelocity) #Error is measured in H1 
