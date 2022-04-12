@@ -1,5 +1,4 @@
 # VPRobust
-me/uzerbinati/UZBox/Maths/Numerica/KAUST/Mixed/VPRobust/ArchimedesKitten/HT_VelocityNorm_0.2_1.ppm' 
 
 ### Elements
 
